@@ -24,3 +24,11 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Glassmorphic + Neumorphic custom utilities */
+.glassy {
+  @apply bg-white/10 backdrop-blur-lg border border-white/20;
+}
+.shadow-neumorphic {
+  box-shadow: 8px 8px 24px #18181b, -8px -8px 24px #23232a;
+}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,15 +20,26 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className="bg-gradient-to-br from-black via-zinc-900 to-gray-800 text-white min-h-screen">
+        <nav className="flex justify-between items-center px-8 py-6 bg-black/40 backdrop-blur-md border-b border-zinc-800 sticky top-0 z-50">
+          <Link href="/" className="text-2xl font-bold tracking-widest drop-shadow-lg">RETROFUTURE RADIO</Link>
+          <div className="flex gap-6 text-lg">
+            <Link href="/" className="hover:text-pink-400 transition">Home</Link>
+            <Link href="/about" className="hover:text-pink-400 transition">About</Link>
+            <Link href="/contact" className="hover:text-pink-400 transition">Contact</Link>
+          </div>
+        </nav>
+        <main className="max-w-5xl mx-auto px-4 py-10">
+          {children}
+        </main>
+        <footer className="text-center text-zinc-500 py-10 border-t border-zinc-800 bg-black/30 mt-20">
+          <p>© 2025 RETROFUTURE RADIO · All rights reserved.</p>
+        </footer>
       </body>
     </html>
   );
